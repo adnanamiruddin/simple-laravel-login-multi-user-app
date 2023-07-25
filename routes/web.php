@@ -26,8 +26,8 @@ Route::get('/home', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
-    Route::get('/admin/operator', [AdminController::class, 'operator']);
-    Route::get('/admin/bendahara', [AdminController::class, 'bendahara']);
-    Route::get('/admin/marketing', [AdminController::class, 'marketing']);
+    Route::get('/admin/operator', [AdminController::class, 'operator'])->middleware('userAccess:operator');
+    Route::get('/admin/bendahara', [AdminController::class, 'bendahara'])->middleware('userAccess:bendahara');
+    Route::get('/admin/marketing', [AdminController::class, 'marketing'])->middleware('userAccess:marketing');
     Route::get('/logout', [SessionController::class, 'logout']);
 });
