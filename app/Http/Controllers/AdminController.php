@@ -9,29 +9,21 @@ class AdminController extends Controller
 {
     public function index()
     {
-        echo "Halo, selamat datang";
-        echo "<h1>" . Auth::user()->name . "</h1>";
-        echo "<a href='/logout'><< Logout</a>";
+        return view('admin');
     }
 
     public function operator()
     {
-        echo "Halo, selamat datang Operator";
-        echo "<h1>" . Auth::user()->name . "</h1>";
-        echo "<a href='/logout'><< Logout</a>";
+        return view('admin');
     }
 
     public function bendahara()
     {
-        echo "Halo, selamat datang Bendahara";
-        echo "<h1>" . Auth::user()->name . "</h1>";
-        echo "<a href='/logout'><< Logout</a>";
+        return view('admin');
     }
 
     public function marketing()
     {
-        echo "Halo, selamat datang Marketing";
-        echo "<h1>" . Auth::user()->name . "</h1>";
-        echo "<a href='/logout'><< Logout</a>";
+        return view('admin');
     }
 }
