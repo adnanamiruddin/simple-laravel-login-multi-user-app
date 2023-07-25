@@ -28,9 +28,23 @@ class SessionController extends Controller
         ];
 
         if (Auth::attempt($dataLogin)) {
-            return redirect('/admin');
+            if (Auth::user()->role == 'operator') {
+                return redirect('admin/operator');
+            } else if (Auth::user()->role == 'bendahara') {
+                return redirect('admin/bendahara');
+            } else if (Auth::user()->role == 'bendahara') {
+                return redirect('admin/bendahara');
+            } else if (Auth::user()->role == 'marketing') {
+                return redirect('admin/marketing');
+            }
         } else {
             return redirect('')->withErrors('Username and password yang diinput salah!')->withInput();
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('');
     }
 }

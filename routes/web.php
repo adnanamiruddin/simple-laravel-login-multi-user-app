@@ -16,12 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/', [SessionController::class, 'index']);
+    Route::get('/', [SessionController::class, 'index'])->name('login');
     Route::post('/', [SessionController::class, 'login']);
 });
 
-Route::get('/home', function() {
+Route::get('/home', function () {
     return redirect('/admin');
 });
 
-Route::get('/admin', [AdminController::class, 'index']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/admin/operator', [AdminController::class, 'operator']);
+    Route::get('/admin/bendahara', [AdminController::class, 'bendahara']);
+    Route::get('/admin/marketing', [AdminController::class, 'marketing']);
+    Route::get('/logout', [SessionController::class, 'logout']);
+});
